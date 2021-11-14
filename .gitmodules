@@ -1,0 +1,6 @@
+[submodule "api"]
+  path = api
+  url = https://github.com/a-onishi-0113/Connection_app_api
+[submodule "front"]
+  path = front
+  url = https://github.com/a-onishi-0113/Connection_app_front
