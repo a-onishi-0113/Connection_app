@@ -15,6 +15,10 @@ services:
       context: ./api
       args:
         WORKDIR: $WORKDIR
+        AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+        AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+        S3_REGION: $S3_REGION
+        S3_BUCKET: $S3_BUCKET
     environment:
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD
       API_DOMAIN: "localhost:$FRONT_PORT" 
@@ -31,8 +35,18 @@ services:
       context: ./front
       args:
         WORKDIR: $WORKDIR
+        API_KEY: $API_KEY
+        AUTH_DOMAIN: $AUTH_DOMAIN
+        PROJECT_ID: $PROJECT_ID
+        APP_ID: $APP_ID
+        STORAGE_BUCKET: $STORAGE_BUCKET
+        MESSAGE_SENDER_ID: $MESSAGE_SENDER_ID
         CONTAINER_PORT: $CONTAINER_PORT
         API_URL: "http://localhost:$API_PORT"
+        GM_API_KEY: $GM_API_KEY
+        GUEST_EMAIL: $GUEST_EMAIL
+        GUEST_UID: $GUEST_UID
+        GUEST_PASS: $GUEST_PASS
     command: yarn run dev
     volumes:
       - ./front:/$WORKDIR
